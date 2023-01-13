@@ -97,6 +97,7 @@ def GAMBLER_BOT_5000_ROLL(current_roll):
     print(f"GAMBLER_BOT_5000 rolled {gen_num}.")
     if int(gen_num) == 1:
         print("GAMBLER_BOT_5000 HAS ROLLED THE DEATH ROLL. YOU WIN - THANK YOU FOR PLAYING.")
+        time.sleep(2)
         print("GAMBLER_BOT_5000 WILL SELF-DESTRUCT IN 5...")
         time.sleep(1)
         print("4...")

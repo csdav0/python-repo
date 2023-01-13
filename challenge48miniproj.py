@@ -6,8 +6,8 @@ import sys, time
 import os
 
 def main():
+    #using curses module, set up title text windows that can handle Figlet objects
     stdscr= curses.initscr()
-    #win1 = curses.newwin(9, 122, 0, 0)
     win2 = curses.newwin(9, 44, 9, 16)
     win3 = curses.newwin(9, 122, 18, 0)
 
@@ -21,7 +21,8 @@ def main():
     title = pyfiglet.figlet_format("DEATH ROLL", font= "doom")
     win3.addstr(0,0,title)
     win3.refresh()
-
+    
+    #press any key to continue is a built-in behavior to curses .getch() and .endwin()
     win4 = curses.newwin(2,30,27,0)
     win4.addstr(0,0,"Press any key to continue")
     win4.refresh()
@@ -29,12 +30,14 @@ def main():
     stdscr.getch()
     curses.endwin()
 
+    #intro preamble, uses system flush to display text one character at a time in 0.02s increments
     for char in "In DEATH ROLL, you will face off against GAMBLER_BOT_5000 in rolls to the DEATH!!!":
         print(char, end="")
         sys.stdout.flush()
         time.sleep(0.02)
     print("\n")
 
+    #QoL feature so you don't have to sit through rules every time game starts
     while True:
         see_rules_query= input("Would you like to read the rules? (y/n)\n")
         if see_rules_query.lower() == "y":
@@ -57,7 +60,8 @@ def main():
             break
         else:
             print("")
-
+    
+    #prompt user for starting number range, has logic to prevent any input but a number in specified range
     while True: 
         start_number= input("Enter a whole number between 100 and 10000.\n")
         if start_number.isdigit() == True:
@@ -65,12 +69,10 @@ def main():
                 current_roll= int(start_number)
                 PLAYER_ROLL(current_roll)
                 break
-#            else:
- #               print("I saaaiiiiddd....")
         else:
             print("I saaaiiiiddd....")
 
-
+#player_roll class to handle when it is player's turn to roll. Also controls flow of logic at user's press of 'enter'. Passes to computer if roll is not 1.
 def PLAYER_ROLL(current_roll):
     gen_num= random.randint(1, int(current_roll))
     gen_num= str(gen_num)
@@ -88,6 +90,7 @@ def PLAYER_ROLL(current_roll):
             else:
                 change_turn_check= input("Press 'enter' when you are ready to pass the roll to GAMBLER_BOT_5000.\n")
 
+#computer_roll class to handle computer's rolls and pass back to player if roll is not 1
 def GAMBLER_BOT_5000_ROLL(current_roll):
     gen_num= random.randint(1, int(current_roll))
     gen_num= str(gen_num)

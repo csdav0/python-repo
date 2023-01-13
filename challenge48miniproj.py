@@ -64,34 +64,33 @@ def main():
     #prompt user for starting number range, has logic to prevent any input but a number in specified range
     while True: 
         start_number= input("Enter a whole number between 100 and 10000.\n")
-        if start_number.isdigit() == True:
+        if start_number.isdigit() is True:
             if int(start_number) >= 100 and int(start_number) <= 10000:
                 current_roll= int(start_number)
-                PLAYER_ROLL(current_roll)
+                player_roll(current_roll)
                 break
         else:
             print("I saaaiiiiddd....")
 
 #player_roll class to handle when it is player's turn to roll. Also controls flow of logic at user's press of 'enter'. Passes to computer if roll is not 1.
-def PLAYER_ROLL(current_roll):
+def player_roll(current_roll):
     gen_num= random.randint(1, int(current_roll))
     gen_num= str(gen_num)
     print(f"You rolled {gen_num}.")
     if int(gen_num) == 1:
-        current_roll= gen_num
         print("YOU ROLLED THE DEATH ROLL. GAMBLER_BOT_5000 WINS! BETTER LUCK NEXT TIME.")
     else:
         current_roll= int(gen_num)
         change_turn_check= input("Press 'enter' to pass the roll to GAMBLER_BOT_5000.\n")
         while True:
             if change_turn_check == "":
-                GAMBLER_BOT_5000_ROLL(current_roll)
+                gambler_bot_5000_roll(current_roll)
                 break
             else:
                 change_turn_check= input("Press 'enter' when you are ready to pass the roll to GAMBLER_BOT_5000.\n")
 
 #computer_roll class to handle computer's rolls and pass back to player if roll is not 1
-def GAMBLER_BOT_5000_ROLL(current_roll):
+def gambler_bot_5000_roll(current_roll):
     gen_num= random.randint(1, int(current_roll))
     gen_num= str(gen_num)
     print(f"GAMBLER_BOT_5000 rolled {gen_num}.")
@@ -107,7 +106,7 @@ def GAMBLER_BOT_5000_ROLL(current_roll):
         print("Just kidding. Please come back and let me win.")
     else:
         current_roll= int(gen_num)
-        PLAYER_ROLL(current_roll)
+        player_roll(current_roll)
 
 if __name__ == "__main__":
     main()

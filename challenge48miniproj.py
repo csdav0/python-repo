@@ -41,7 +41,7 @@ def main():
     while True:
         see_rules_query= input("Would you like to read the rules? (y/n)\n")
         if see_rules_query.lower() == "y":
-            for char in "Select a number to start, and 'roll' to generate a random integer b/n 1 and the number you picked.\n\nThen it is GAMBLER_BOT_5000's turn. It will roll b/n 1 and the number that was generated.\n\nIt is then your turn again to roll b/n 1 and the number GAMBLER_BOT_5000 just rolled.\n\nTurns continue in this way until someone rolls the number '1'.\n\nWhoever rolls a '1' first has rolled a DEATH ROLL and loses the game!":
+            for char in "Select a number to start, this will be the initial upper bound for a random number generator.\n\nThen 'roll' to generate a random integer in that range.\n\nNow it\'s GAMBLER_BOT_5000's turn -\nit will roll b/n 1 and the new number that was generated (decreasing the roll range).\n\nIt is then your turn again to roll b/n 1 and the number GAMBLER_BOT_5000 just rolled.\n\nTurns continue in this way until someone rolls the number '1'.\n\nWhoever rolls a '1' first has rolled a DEATH ROLL and loses the game!":
                 print(char, end="")
                 sys.stdout.flush()
                 time.sleep(0.02)

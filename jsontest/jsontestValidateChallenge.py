@@ -6,6 +6,7 @@ import jsontestIP
 
 # define the URL we want to use
 POSTURL = "http://validate.jsontest.com/"
+TIMEURL = "http://date.jsontest.com"
 
 def main():
     # test data to validate as legal json
@@ -13,7 +14,11 @@ def main():
     # the key "json" is mapped to a VALUE of the json to test
     # because the test item is a string, we can include whitespaces
 
-    nowtime = str(time.time())
+    resp1 = requests.get(TIMEURL)
+
+    nowtime = resp1.json()
+    print(nowtime)
+
     myIP = str(jsontestIP.main())
     with open("./myservers.txt","r") as serverlist:
         servers = serverlist.read()

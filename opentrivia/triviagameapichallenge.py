@@ -64,7 +64,7 @@ def main():
         answerslist= html.unescape(answerslist)
         print(answerslist)
         useranswer= input("Make a selection:\n")
-        if useranswer is correctanswer:
+        if useranswer.upper() == correctanswer:
             print("Correct!\n")
             user_score += 1
             print(f"You've answered {user_score} / {question_count} questions correctly!\n")
